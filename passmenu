@@ -9,4 +9,6 @@ password_files=( "${password_files[@]%.gpg}" )
 
 password=$(printf '%s\n' "${password_files[@]}" | dmenu "$@")
 
-pass -c "$password"
+if [[ ! -z "$password" ]]; then
+  pass -c "$password"
+fi
